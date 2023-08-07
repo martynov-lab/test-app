@@ -6,29 +6,6 @@ part 'input_login_event.dart';
 part 'input_login_state.dart';
 part 'input_login_bloc.freezed.dart';
 
-// class InputLoginCubit extends Bloc<InputLoginEvent, InputLoginState>
-//     with ValidatorMixin {
-//   InputLoginCubit() : super(const InputLoginState());
-
-//   void onLoginChanged(String value) {
-//     emit(state.copyWith(
-//       login: value,
-//       errorMessage: validateLogin(value),
-//       // isLoginValid: validatePin(value) == null,
-//     ));
-//   }
-
-//   void onLoginUnfocused() {
-//     emit(
-//       state.copyWith(
-//         login: state.login,
-//         errorMessage: validateLogin2(state.login),
-//         isLoginValid: validateLogin2(state.login) == null,
-//       ),
-//     );
-//   }
-// }
-
 class InputLoginBloc extends Bloc<InputLoginEvent, InputLoginState>
     with ValidatorMixin {
   InputLoginBloc() : super(const InputLoginState()) {

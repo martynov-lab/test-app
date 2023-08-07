@@ -11,9 +11,9 @@ part 'screen_first_cubit.freezed.dart';
 class ScreenFirstCubit extends Cubit<ScreenFirstState> {
   final InputLoginBloc loginBloc;
   late final StreamSubscription loginSub;
-  final SecondInputBloc pinTokenBloc;
+  final SecondInputPinBloc pinTokenBloc;
   late final StreamSubscription pinTokenSub;
-  final FirstInputBloc pinAccountBloc;
+  final FirstInputPinBloc pinAccountBloc;
   late final StreamSubscription pinAccountSub;
   ScreenFirstCubit({
     required this.loginBloc,

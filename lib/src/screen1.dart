@@ -35,12 +35,12 @@ class _Screen1State extends State<Screen1> with ValidatorMixin {
     });
     focusNodePin.addListener(() {
       if (!focusNodePin.hasFocus) {
-        context.read<FirstInputBloc>().add(InputPinEvent.unfocused());
+        context.read<FirstInputPinBloc>().add(InputPinEvent.unfocused());
       }
     });
     focusNodePin2.addListener(() {
       if (!focusNodePin2.hasFocus) {
-        context.read<SecondInputBloc>().add(InputPinEvent.unfocused());
+        context.read<SecondInputPinBloc>().add(InputPinEvent.unfocused());
       }
     });
     super.initState();
@@ -67,7 +67,7 @@ class _Screen1State extends State<Screen1> with ValidatorMixin {
                   errorText: state.pinTokenErrorMessage,
                   onChanged: (value) {
                     context
-                        .read<SecondInputBloc>()
+                        .read<SecondInputPinBloc>()
                         .add(InputPinEvent.changed(value));
                   },
                 );
@@ -102,7 +102,7 @@ class _Screen1State extends State<Screen1> with ValidatorMixin {
                   errorText: state.pinAccountErrorMessage,
                   onChanged: (value) {
                     context
-                        .read<FirstInputBloc>()
+                        .read<FirstInputPinBloc>()
                         .add(InputPinEvent.changed(value));
                   },
                 );

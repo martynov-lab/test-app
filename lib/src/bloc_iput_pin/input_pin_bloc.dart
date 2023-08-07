@@ -7,7 +7,7 @@ part 'input_pin_event.dart';
 part 'input_pin_bloc.freezed.dart';
 
 class InputPinBloc extends Bloc<InputPinEvent, InputPinState>
-    with ValidatorMixin, FirstInputBloc, SecondInputBloc {
+    with ValidatorMixin, FirstInputPinBloc, SecondInputPinBloc {
   InputPinBloc() : super(const InputPinState()) {
     on<_InputPinEventChanged>(pinChanged);
     on<_InputPinEventUnfocused>(pinUnfocused);
@@ -34,6 +34,6 @@ class InputPinBloc extends Bloc<InputPinEvent, InputPinState>
   }
 }
 
-mixin FirstInputBloc on Bloc<InputPinEvent, InputPinState> {}
+mixin FirstInputPinBloc on Bloc<InputPinEvent, InputPinState> {}
 
-mixin SecondInputBloc on Bloc<InputPinEvent, InputPinState> {}
+mixin SecondInputPinBloc on Bloc<InputPinEvent, InputPinState> {}

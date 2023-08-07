@@ -21,17 +21,17 @@ class MainApp extends StatelessWidget {
           BlocProvider(
             create: (context) => InputLoginBloc(),
           ),
-          BlocProvider<FirstInputBloc>(
+          BlocProvider<FirstInputPinBloc>(
             create: (_) => InputPinBloc(),
           ),
-          BlocProvider<SecondInputBloc>(
+          BlocProvider<SecondInputPinBloc>(
             create: (context) => InputPinBloc(),
           ),
           BlocProvider(
             create: (context) => ScreenFirstCubit(
               loginBloc: context.read<InputLoginBloc>(),
-              pinTokenBloc: context.read<SecondInputBloc>(),
-              pinAccountBloc: context.read<FirstInputBloc>(),
+              pinTokenBloc: context.read<SecondInputPinBloc>(),
+              pinAccountBloc: context.read<FirstInputPinBloc>(),
             ),
           ),
         ],
