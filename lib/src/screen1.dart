@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_test/src/bloc_input_login/input_login_bloc.dart';
 import 'package:flutter_app_test/src/bloc_iput_pin/input_pin_bloc.dart';
 import 'package:flutter_app_test/src/input_text.dart';
-import 'package:flutter_app_test/src/validation_input_mixin.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'cubit_screen_first/screen_first_cubit.dart';
@@ -14,7 +13,7 @@ class Screen1 extends StatefulWidget {
   State<Screen1> createState() => _Screen1State();
 }
 
-class _Screen1State extends State<Screen1> with ValidatorMixin {
+class _Screen1State extends State<Screen1> {
   FocusNode focusNodeLogin = FocusNode();
   FocusNode focusNodePin = FocusNode();
   FocusNode focusNodePin2 = FocusNode();

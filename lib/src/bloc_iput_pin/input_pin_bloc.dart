@@ -1,27 +1,25 @@
-import 'package:flutter_app_test/src/validation_input_mixin.dart';
+import 'package:flutter_app_test/src/mixin/validation_pin_mixin.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'input_pin_state.dart';
 part 'input_pin_event.dart';
-part 'input_pin_bloc.freezed.dart';
 
-class InputPinBloc extends Bloc<InputPinEvent, InputPinState>
-    with ValidatorMixin, FirstInputPinBloc, SecondInputPinBloc {
+class InputPinBloc extends Bloc<InputEvent, InputPinState>
+    with ValidationPinMixin, FirstInputPinBloc, SecondInputPinBloc {
   InputPinBloc() : super(const InputPinState()) {
-    on<_InputPinEventChanged>(pinChanged);
-    on<_InputPinEventUnfocused>(pinUnfocused);
+    on<InputPinChanged>(pinChanged);
+    on<InputPinUnfocused>(pinUnfocused);
   }
 
-  void pinChanged(InputPinEvent event, Emitter emit) async {
-    String value = (event as _InputPinEventChanged).value;
+  void pinChanged(InputPinChanged event, Emitter emit) async {
+    String? value = event.value;
     emit(state.copyWith(
       pin: value,
       errorMessage: validatePin(value),
     ));
   }
 
-  void pinUnfocused(InputPinEvent event, Emitter emit) async {
+  void pinUnfocused(InputPinUnfocused event, Emitter emit) async {
     emit(
       state.copyWith(
         errorMessage:
@@ -34,6 +32,6 @@ class InputPinBloc extends Bloc<InputPinEvent, InputPinState>
   }
 }
 
-mixin FirstInputPinBloc on Bloc<InputPinEvent, InputPinState> {}
+mixin FirstInputPinBloc on Bloc<InputEvent, InputPinState> {}
 
-mixin SecondInputPinBloc on Bloc<InputPinEvent, InputPinState> {}
+mixin SecondInputPinBloc on Bloc<InputEvent, InputPinState> {}

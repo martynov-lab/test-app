@@ -1,4 +1,4 @@
-import 'package:flutter_app_test/src/validation_input_mixin.dart';
+import 'package:flutter_app_test/src/mixin/validation_login_mixin.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -7,7 +7,7 @@ part 'input_login_state.dart';
 part 'input_login_bloc.freezed.dart';
 
 class InputLoginBloc extends Bloc<InputLoginEvent, InputLoginState>
-    with ValidatorMixin {
+    with ValidatorLoginMixin {
   InputLoginBloc() : super(const InputLoginState()) {
     on<_InputLoginEventChanged>(loginChanged);
     on<_InputLoginEventUnfocused>(loginUnfocused);
