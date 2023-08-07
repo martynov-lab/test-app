@@ -35,11 +35,12 @@ class _Screen2State extends State<Screen2> {
             // Text('Text со Screen 1: ${widget.textScreen2}'),
             // const SizedBox(height: 30),
             InputText(
-              controller: _controller,
+              // controller: _controller,
               focusNode: focusNode,
               label: 'Ваше введенное значение:',
               hint: 'Введите значение',
               errorText: 'sdfsdfsdf',
+              onChanged: (value) {},
             ),
             const SizedBox(height: 30),
             ElevatedButton(

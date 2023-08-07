@@ -15,17 +15,11 @@ class Screen1 extends StatefulWidget {
 }
 
 class _Screen1State extends State<Screen1> with ValidatorMixin {
-  TextEditingController _controller1 = TextEditingController();
-  TextEditingController _controller2 = TextEditingController();
-  TextEditingController _controllerToken = TextEditingController();
   FocusNode focusNodeLogin = FocusNode();
   FocusNode focusNodePin = FocusNode();
   FocusNode focusNodePin2 = FocusNode();
   @override
   void dispose() {
-    _controller1.dispose();
-    _controller2.dispose();
-    _controllerToken.dispose();
     focusNodeLogin.dispose();
     focusNodePin.dispose();
     focusNodePin2.dispose();
@@ -34,27 +28,6 @@ class _Screen1State extends State<Screen1> with ValidatorMixin {
 
   @override
   void initState() {
-    _controller1.addListener(() {
-      // if (_controller1.text.length > 1) {
-      context
-          .read<InputLoginBloc>()
-          .add(InputLoginEvent.changed(_controller1.text));
-      // }
-    });
-    _controller2.addListener(() {
-      // if (_controller2.text.length > 1) {
-      context
-          .read<FirstInputBloc>()
-          .add(InputPinEvent.changed(_controller2.text));
-      // }
-    });
-    _controllerToken.addListener(() {
-      // if (_controller3.text.length > 1) {
-      context
-          .read<SecondInputBloc>()
-          .add(InputPinEvent.changed(_controllerToken.text));
-      // }
-    });
     focusNodeLogin.addListener(() {
       if (!focusNodeLogin.hasFocus) {
         context.read<InputLoginBloc>().add(InputLoginEvent.unfocused());
@@ -87,11 +60,16 @@ class _Screen1State extends State<Screen1> with ValidatorMixin {
             BlocBuilder<ScreenFirstCubit, ScreenFirstState>(
               builder: (context, state) {
                 return InputText(
-                  controller: _controllerToken,
+                  // controller: _controllerToken,
                   focusNode: focusNodePin2,
                   label: 'PIN код',
                   hint: 'Введите PIN код',
                   errorText: state.pinTokenErrorMessage,
+                  onChanged: (value) {
+                    context
+                        .read<SecondInputBloc>()
+                        .add(InputPinEvent.changed(value));
+                  },
                 );
               },
             ),
@@ -100,11 +78,16 @@ class _Screen1State extends State<Screen1> with ValidatorMixin {
               //context.read<FormLoginCubit>()
               builder: (context, state) {
                 return InputText(
-                  controller: _controller1,
+                  // controller: _controller1,
                   focusNode: focusNodeLogin,
                   label: 'Логин',
                   hint: 'Введите логин',
                   errorText: state.loginErrorMessage,
+                  onChanged: (value) {
+                    context
+                        .read<InputLoginBloc>()
+                        .add(InputLoginEvent.changed(value));
+                  },
                 );
               },
             ),
@@ -112,11 +95,16 @@ class _Screen1State extends State<Screen1> with ValidatorMixin {
             BlocBuilder<ScreenFirstCubit, ScreenFirstState>(
               builder: (context, state) {
                 return InputText(
-                  controller: _controller2,
+                  // controller: _controller2,
                   focusNode: focusNodePin,
                   label: 'PIN код',
                   hint: 'Введите PIN код',
                   errorText: state.pinAccountErrorMessage,
+                  onChanged: (value) {
+                    context
+                        .read<FirstInputBloc>()
+                        .add(InputPinEvent.changed(value));
+                  },
                 );
               },
             ),
@@ -126,10 +114,7 @@ class _Screen1State extends State<Screen1> with ValidatorMixin {
                 return ElevatedButton(
                   onPressed: () {
                     context.read<ScreenFirstCubit>().submite();
-                    if (state.isFormValid == true) {
-                      _controller1.clear();
-                      _controller2.clear();
-                    }
+                    if (state.isFormValid == true) {}
                   },
                   child: const Text('Submite'),
                 );

@@ -8,19 +8,19 @@ class InputText extends StatefulWidget {
   final String? label;
   final TextStyle? labelStyle;
   final String hint;
-  final TextEditingController controller;
+  // final TextEditingController controller;
   final FocusNode focusNode;
   final Function? onPressedSuffixButton;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final List<TextInputFormatter>? inputFormatters;
-  // final String? Function(String?)? validator;
+  final Function(String) onChanged;
   final String? errorText;
   const InputText({
     super.key,
     this.label,
     this.hint = '',
-    required this.controller,
+    // required this.controller,
     required this.focusNode,
     this.enableInterface = true,
     this.isRequired = false,
@@ -30,7 +30,7 @@ class InputText extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.inputFormatters,
-    // this.validator,
+    required this.onChanged,
     required this.errorText,
   });
 
@@ -75,7 +75,7 @@ class _InputTextState extends State<InputText> {
                 child: TextFormField(
                   focusNode: widget.focusNode,
                   // validator: widget.validator,
-                  controller: widget.controller,
+                  // controller: widget.controller,
                   obscureText: widget.isPassword ? _isHidePassword : false,
                   obscuringCharacter: '●',
                   inputFormatters: widget.inputFormatters,
@@ -110,7 +110,7 @@ class _InputTextState extends State<InputText> {
                                 ? IconButton(
                                     onPressed: () {
                                       widget.onPressedSuffixButton;
-                                      widget.controller.clear();
+                                      // widget.controller.clear();
                                       setState(() {
                                         isTextFieldNotEmpty = false;
                                       });
@@ -119,11 +119,12 @@ class _InputTextState extends State<InputText> {
                                   )
                                 : const SizedBox.shrink()),
                   ),
-                  onChanged: (value) {
-                    // setState(() {
-                    //   isTextFieldNotEmpty = value.isNotEmpty;
-                    // });
-                  },
+                  onChanged: widget.onChanged,
+                  // (value) {
+                  // setState(() {
+                  //   isTextFieldNotEmpty = value.isNotEmpty;
+                  // });
+                  // },
                 ),
               )
             : Container(
