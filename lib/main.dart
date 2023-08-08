@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'src/bloc_input_login/input_login_bloc.dart';
-import 'src/bloc_iput_pin/input_pin_bloc.dart';
-import 'src/cubit_screen_first/screen_first_cubit.dart';
+import 'src/bloc/bloc_input_login/input_login_bloc.dart';
+import 'src/bloc/bloc_iput_pin/input_pin_bloc.dart';
+import 'src/bloc/cubit_screen_first/screen_first_cubit.dart';
 import 'src/screen1.dart';
 
 void main() {

@@ -76,6 +76,7 @@ class _InputTextState extends State<InputText> {
                   focusNode: widget.focusNode,
                   // validator: widget.validator,
                   // controller: widget.controller,
+                  // onEditingComplete:     ,
                   obscureText: widget.isPassword ? _isHidePassword : false,
                   obscuringCharacter: '●',
                   inputFormatters: widget.inputFormatters,

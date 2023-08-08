@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/src/bloc_input_login/input_login_bloc.dart';
-import 'package:flutter_app_test/src/bloc_iput_pin/input_pin_bloc.dart';
+import 'package:flutter_app_test/src/bloc/bloc_input_login/input_login_bloc.dart';
+import 'package:flutter_app_test/src/bloc/bloc_iput_pin/input_pin_bloc.dart';
+import 'package:flutter_app_test/src/bloc/cubit_screen_first/screen_first_cubit.dart';
 import 'package:flutter_app_test/src/input_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'cubit_screen_first/screen_first_cubit.dart';
 
 class Screen1 extends StatefulWidget {
   const Screen1({super.key});
@@ -29,17 +28,17 @@ class _Screen1State extends State<Screen1> {
   void initState() {
     focusNodeLogin.addListener(() {
       if (!focusNodeLogin.hasFocus) {
-        context.read<InputLoginBloc>().add(InputLoginEvent.unfocused());
+        context.read<InputLoginBloc>().add(InputLoginUnfocused());
       }
     });
     focusNodePin.addListener(() {
       if (!focusNodePin.hasFocus) {
-        context.read<FirstInputPinBloc>().add(InputPinEvent.unfocused());
+        context.read<FirstInputPinBloc>().add(InputPinUnfocused());
       }
     });
     focusNodePin2.addListener(() {
       if (!focusNodePin2.hasFocus) {
-        context.read<SecondInputPinBloc>().add(InputPinEvent.unfocused());
+        context.read<SecondInputPinBloc>().add(InputPinUnfocused());
       }
     });
     super.initState();
@@ -67,7 +66,7 @@ class _Screen1State extends State<Screen1> {
                   onChanged: (value) {
                     context
                         .read<SecondInputPinBloc>()
-                        .add(InputPinEvent.changed(value));
+                        .add(InputPinChanged(value));
                   },
                 );
               },
@@ -85,7 +84,7 @@ class _Screen1State extends State<Screen1> {
                   onChanged: (value) {
                     context
                         .read<InputLoginBloc>()
-                        .add(InputLoginEvent.changed(value));
+                        .add(InputLoginChanged(value));
                   },
                 );
               },
@@ -102,7 +101,7 @@ class _Screen1State extends State<Screen1> {
                   onChanged: (value) {
                     context
                         .read<FirstInputPinBloc>()
-                        .add(InputPinEvent.changed(value));
+                        .add(InputPinChanged(value));
                   },
                 );
               },
