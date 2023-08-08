@@ -13,8 +13,8 @@ abstract class InputEvent {
 }
 
 class InputLoginChanged extends InputEvent {
-  InputLoginChanged(this.value);
-  String value;
+  const InputLoginChanged(this.value);
+  final String value;
 }
 
-class InputLoginUnfocused extends InputEvent {}
+class InputLoginFinished extends InputEvent {}

@@ -14,7 +14,8 @@ mixin ValidatorLoginMixin {
   }
 
   String? validateLogin2(String value) {
-    if (value.length <= 3 && value.isNotEmpty && value.trim().isEmpty) {
+    if (value.length < 3) {
+      // && value.isNotEmpty && value.trim().isEmpty
       return 'минимальная длина - 3 символа';
     } else if (value.length > 48) {
       return 'превышена допустимая длина 48 символов';

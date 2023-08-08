@@ -11,11 +11,11 @@ part of 'input_pin_bloc.dart';
 // }
 
 class InputPinState {
-  String pin;
-  bool isPinValid;
-  String? errorMessage;
+  final String pin;
+  final bool isPinValid;
+  final String? errorMessage;
 
-  InputPinState({
+  const InputPinState({
     this.pin = '',
     this.isPinValid = false,
     this.errorMessage,

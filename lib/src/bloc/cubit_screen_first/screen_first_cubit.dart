@@ -77,8 +77,8 @@ class ScreenFirstCubit extends Cubit<ScreenFirstState> {
     });
   }
   void submite() {
-    loginBloc.add(InputLoginUnfocused());
-    pinTokenBloc.add(InputPinUnfocused());
-    pinAccountBloc.add(InputPinUnfocused());
+    loginBloc.add(InputLoginFinished());
+    pinTokenBloc.add(InputPinFinished());
+    pinAccountBloc.add(InputPinFinished());
   }
 }

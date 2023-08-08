@@ -13,36 +13,36 @@ class Screen1 extends StatefulWidget {
 }
 
 class _Screen1State extends State<Screen1> {
-  FocusNode focusNodeLogin = FocusNode();
-  FocusNode focusNodePin = FocusNode();
-  FocusNode focusNodePin2 = FocusNode();
-  @override
-  void dispose() {
-    focusNodeLogin.dispose();
-    focusNodePin.dispose();
-    focusNodePin2.dispose();
-    super.dispose();
-  }
+  // FocusNode focusNodeLogin = FocusNode();
+  // FocusNode focusNodePin = FocusNode();
+  // FocusNode focusNodePin2 = FocusNode();
+  // @override
+  // void dispose() {
+  // focusNodeLogin.dispose();
+  // focusNodePin.dispose();
+  // focusNodePin2.dispose();
+  //   super.dispose();
+  // }
 
-  @override
-  void initState() {
-    focusNodeLogin.addListener(() {
-      if (!focusNodeLogin.hasFocus) {
-        context.read<InputLoginBloc>().add(InputLoginUnfocused());
-      }
-    });
-    focusNodePin.addListener(() {
-      if (!focusNodePin.hasFocus) {
-        context.read<FirstInputPinBloc>().add(InputPinUnfocused());
-      }
-    });
-    focusNodePin2.addListener(() {
-      if (!focusNodePin2.hasFocus) {
-        context.read<SecondInputPinBloc>().add(InputPinUnfocused());
-      }
-    });
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  // focusNodeLogin.addListener(() {
+  //   if (!focusNodeLogin.hasFocus) {
+  //     context.read<InputLoginBloc>().add(InputLoginFinished());
+  //   }
+  // });
+  // focusNodePin.addListener(() {
+  //   if (!focusNodePin.hasFocus) {
+  //     context.read<FirstInputPinBloc>().add(InputPinFinished());
+  //   }
+  // });
+  // focusNodePin2.addListener(() {
+  //   if (!focusNodePin2.hasFocus) {
+  //     context.read<SecondInputPinBloc>().add(InputPinFinished());
+  //   }
+  // });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class _Screen1State extends State<Screen1> {
               builder: (context, state) {
                 return InputText(
                   // controller: _controllerToken,
-                  focusNode: focusNodePin2,
+                  // focusNode: focusNodePin2,
                   label: 'PIN код',
                   hint: 'Введите PIN код',
                   errorText: state.pinTokenErrorMessage,
@@ -77,7 +77,7 @@ class _Screen1State extends State<Screen1> {
               builder: (context, state) {
                 return InputText(
                   // controller: _controller1,
-                  focusNode: focusNodeLogin,
+                  // focusNode: focusNodeLogin,
                   label: 'Логин',
                   hint: 'Введите логин',
                   errorText: state.loginErrorMessage,
@@ -94,7 +94,7 @@ class _Screen1State extends State<Screen1> {
               builder: (context, state) {
                 return InputText(
                   // controller: _controller2,
-                  focusNode: focusNodePin,
+                  // focusNode: focusNodePin,
                   label: 'PIN код',
                   hint: 'Введите PIN код',
                   errorText: state.pinAccountErrorMessage,

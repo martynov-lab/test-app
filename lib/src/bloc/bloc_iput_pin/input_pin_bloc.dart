@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter_app_test/src/mixin/validation_pin_mixin.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,24 +7,48 @@ part 'input_pin_event.dart';
 
 class InputPinBloc extends Bloc<InputEvent, InputPinState>
     with ValidationPinMixin, FirstInputPinBloc, SecondInputPinBloc {
-  InputPinBloc() : super(InputPinState()) {
-    on<InputPinChanged>(pinChanged);
-    on<InputPinUnfocused>(pinUnfocused);
+  Timer? _timer;
+  InputPinBloc() : super(const InputPinState()) {
+    on<InputPinChanged>(validateDuringInput);
+    on<InputPinFinished>(validateFinal);
   }
 
-  void pinChanged(InputPinChanged event, Emitter<InputPinState> emit) async {
-    emit(state.copyWith(
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
+      print('Timer tick: ${timer.tick}');
+      if (timer.tick >= 5) {
+        print('ValidateFinal !!!!!');
+        add(InputPinFinished());
+        timer.cancel();
+      }
+    });
+  }
+
+  void _reset() {
+    _timer?.cancel();
+    _timer = null;
+    _startTimer();
+  }
+
+  void validateDuringInput(
+      InputPinChanged event, Emitter<InputPinState> emitter) async {
+    emitter(state.copyWith(
       pin: event.value,
       errorMessage: validatePin(event.value),
     ));
+    if (_timer != null) {
+      _reset();
+    } else {
+      _startTimer();
+    }
 
     print('errorMessage Val: ${validatePin(event.value)}');
     print('errorMessage Pin: ${state.errorMessage}');
   }
 
-  void pinUnfocused(
-      InputPinUnfocused event, Emitter<InputPinState> emit) async {
-    emit(
+  void validateFinal(
+      InputPinFinished event, Emitter<InputPinState> emitter) async {
+    emitter(
       state.copyWith(
         errorMessage:
             validatePin2(state.pin, 'Qwertyu123', 'Qwertyu123*', '12345678'),
@@ -38,3 +63,28 @@ class InputPinBloc extends Bloc<InputEvent, InputPinState>
 mixin FirstInputPinBloc on Bloc<InputEvent, InputPinState> {}
 
 mixin SecondInputPinBloc on Bloc<InputEvent, InputPinState> {}
+
+// class CustomTimer {
+//   Timer? _timer;
+//   Function(InputEvent event) addEvent;
+//   CustomTimer({required this.addEvent});
+
+//   void _startTimer() {
+//     _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
+//       print('Timer tick: ${timer.tick}');
+//       if (timer.tick >= 5) {
+//         print('ValidateFinal !!!!!');
+//         // add(InputPinFinished());
+//         addEvent;
+
+//         timer.cancel();
+//       }
+//     });
+//   }
+
+//   void _reset() {
+//     _timer?.cancel();
+//     _timer = null;
+//     _startTimer();
+//   }
+// }

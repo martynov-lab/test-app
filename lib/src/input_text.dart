@@ -9,7 +9,7 @@ class InputText extends StatefulWidget {
   final TextStyle? labelStyle;
   final String hint;
   // final TextEditingController controller;
-  final FocusNode focusNode;
+  // final FocusNode focusNode;
   final Function? onPressedSuffixButton;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -21,7 +21,7 @@ class InputText extends StatefulWidget {
     this.label,
     this.hint = '',
     // required this.controller,
-    required this.focusNode,
+    // required this.focusNode,
     this.enableInterface = true,
     this.isRequired = false,
     this.isPassword = false,
@@ -73,7 +73,7 @@ class _InputTextState extends State<InputText> {
             ? SizedBox(
                 height: 56,
                 child: TextFormField(
-                  focusNode: widget.focusNode,
+                  // focusNode: widget.focusNode,
                   // validator: widget.validator,
                   // controller: widget.controller,
                   // onEditingComplete:     ,

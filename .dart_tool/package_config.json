@@ -392,6 +392,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "time_elapsed",
+      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dev/time_elapsed-0.2.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "timing",
       "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dev/timing-1.0.1",
       "packageUri": "lib/",
@@ -434,7 +440,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-08-07T12:44:44.171313Z",
+  "generated": "2023-08-08T11:37:47.836494Z",
   "generator": "pub",
   "generatorVersion": "3.0.5"
 }

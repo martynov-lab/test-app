@@ -512,6 +512,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
+  time_elapsed:
+    dependency: "direct main"
+    description:
+      name: time_elapsed
+      sha256: c57044d485eb2094043ab4b7e13d7d6096facafbb2c51085dfaca15390b1d745
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.6"
   timing:
     dependency: transitive
     description:

@@ -1,22 +1,13 @@
-import 'package:flutter_app_test/src/utils/equtable/equtable.dart';
-
-abstract class Failure extends Equatable {
-  @override
-  List<Object?> get props => [];
-}
+abstract class Failure {}
 
 class ServerFailure extends Failure {
   final String message;
 
   ServerFailure(this.message);
-  @override
-  List<Object> get props => [message];
 }
 
 class CacheFailure extends Failure {
   final String message;
 
   CacheFailure(this.message);
-  @override
-  List<Object> get props => [message];
 }

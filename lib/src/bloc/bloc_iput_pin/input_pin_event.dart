@@ -10,7 +10,7 @@ class InputPinChanged extends InputEvent {
   final String value;
 }
 
-class InputPinUnfocused extends InputEvent {}
+class InputPinFinished extends InputEvent {}
 
 
 

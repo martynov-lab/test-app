@@ -1,8 +1,8 @@
 version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
 options: "bac81e600ac96333219013287f7411c1e1ab7ca5c84df35e9156d98d8cd8e7af"
-build_start_time: [1691493583, 625150000]
-build_end_time: [1691493585, 539093000]
+build_start_time: [1691520368, 270311000]
+build_end_time: [1691520369, 826113000]
 inputs:
-  "/Users/arovit/Development/Project/test-app/macos/Flutter/GeneratedPluginRegistrant.swift": [1691493576, 921983658]
+  "/Users/arovit/Development/Project/test-app/macos/Flutter/GeneratedPluginRegistrant.swift": [1691520360, 800991126]
   "/Users/arovit/Development/Project/test-app/macos/Runner/AppDelegate.swift": [1664437869, 936365247]
   "/Users/arovit/Development/Project/test-app/macos/Runner/MainFlutterWindow.swift": [1687863866, 225277781]

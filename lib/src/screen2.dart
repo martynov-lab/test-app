@@ -13,11 +13,11 @@ class Screen2 extends StatefulWidget {
 }
 
 class _Screen2State extends State<Screen2> {
-  TextEditingController _controller = TextEditingController();
-  FocusNode focusNode = FocusNode();
+  // TextEditingController _controller = TextEditingController();
+  // FocusNode focusNode = FocusNode();
   @override
   void dispose() {
-    _controller.dispose();
+    // _controller.dispose();
     super.dispose();
   }
 
@@ -36,7 +36,7 @@ class _Screen2State extends State<Screen2> {
             // const SizedBox(height: 30),
             InputText(
               // controller: _controller,
-              focusNode: focusNode,
+              // focusNode: focusNode,
               label: 'Ваше введенное значение:',
               hint: 'Введите значение',
               errorText: 'sdfsdfsdf',
