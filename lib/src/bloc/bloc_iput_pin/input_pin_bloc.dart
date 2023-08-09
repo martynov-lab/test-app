@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter_app_test/src/mixin/validation_pin_mixin.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 
 part 'input_pin_state.dart';
 part 'input_pin_event.dart';
@@ -13,8 +14,20 @@ class InputPinBloc extends Bloc<InputEvent, InputPinState>
     with ValidationPinMixin, FirstInputPinBloc, SecondInputPinBloc {
   Timer? _timer;
   InputPinBloc() : super(const InputPinState()) {
-    on<InputPinChanged>(_validateDuringInput);
-    on<InputPinFinished>(_validateFinal);
+    // on<InputPinChanged>(_validateDuringInput);
+    // on<InputPinFinished>(_validateFinal);
+    on<InputEvent>(
+      (event, emitter) => event.map<Future<void>>(
+        InputPinChanged: (event) => _validateDuringInput(event, emitter),
+        InputPinFinished: (event) => _validateFinal(event, emitter),
+      ),
+      transformer: bloc_concurrency.droppable(),
+      //bloc_concurrency provides an opinionated set of event transformers:
+      // • concurrent - process events concurrently
+      // • sequential - process events sequentially
+      // • droppable - ignore any events added while an event is processing
+      // • restartable - process only the latest event and cancel previous event handlers
+    );
   }
 
   void _startTimer() {
