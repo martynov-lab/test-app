@@ -32,12 +32,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "bloc_concurrency",
-      "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dev/bloc_concurrency-0.2.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/arovit/.pub-cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -440,7 +434,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-08-09T05:57:35.019590Z",
+  "generated": "2023-08-09T06:31:37.492853Z",
   "generator": "pub",
   "generatorVersion": "3.0.5"
 }
