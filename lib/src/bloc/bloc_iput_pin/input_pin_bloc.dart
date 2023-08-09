@@ -54,11 +54,11 @@ class InputPinBloc extends Bloc<InputEvent, InputPinState>
       InputPinFinished event, Emitter<InputPinState> emitter) async {
     emitter(
       state.copyWith(
-        errorMessage:
-            validatePin2(state.pin, 'Qwertyu123', 'Qwertyu123*', '12345678'),
-        isPinValid:
-            validatePin2(state.pin, 'Qwertyu123', 'Qwertyu123*', '12345678') ==
-                null,
+        errorMessage: validatePin2(state.pin, 'Qwertyu123',
+            ['Qwertyu123*', 'Qwertyu123!', 'Qwertyu123&'], '12345678'),
+        isPinValid: validatePin2(state.pin, 'Qwertyu123',
+                ['Qwertyu123*', 'Qwertyu123!', 'Qwertyu123&'], '12345678') ==
+            null,
       ),
     );
   }
