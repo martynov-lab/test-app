@@ -5,12 +5,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'input_pin_state.dart';
 part 'input_pin_event.dart';
 
+mixin FirstInputPinBloc on Bloc<InputEvent, InputPinState> {}
+
+mixin SecondInputPinBloc on Bloc<InputEvent, InputPinState> {}
+
 class InputPinBloc extends Bloc<InputEvent, InputPinState>
     with ValidationPinMixin, FirstInputPinBloc, SecondInputPinBloc {
   Timer? _timer;
   InputPinBloc() : super(const InputPinState()) {
-    on<InputPinChanged>(validateDuringInput);
-    on<InputPinFinished>(validateFinal);
+    on<InputPinChanged>(_validateDuringInput);
+    on<InputPinFinished>(_validateFinal);
   }
 
   void _startTimer() {
@@ -30,7 +34,7 @@ class InputPinBloc extends Bloc<InputEvent, InputPinState>
     _startTimer();
   }
 
-  void validateDuringInput(
+  void _validateDuringInput(
       InputPinChanged event, Emitter<InputPinState> emitter) async {
     emitter(state.copyWith(
       pin: event.value,
@@ -46,7 +50,7 @@ class InputPinBloc extends Bloc<InputEvent, InputPinState>
     print('errorMessage Pin: ${state.errorMessage}');
   }
 
-  void validateFinal(
+  void _validateFinal(
       InputPinFinished event, Emitter<InputPinState> emitter) async {
     emitter(
       state.copyWith(
@@ -60,9 +64,7 @@ class InputPinBloc extends Bloc<InputEvent, InputPinState>
   }
 }
 
-mixin FirstInputPinBloc on Bloc<InputEvent, InputPinState> {}
 
-mixin SecondInputPinBloc on Bloc<InputEvent, InputPinState> {}
 
 // class CustomTimer {
 //   Timer? _timer;
